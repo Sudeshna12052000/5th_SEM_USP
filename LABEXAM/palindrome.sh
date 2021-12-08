@@ -1,3 +1,5 @@
+1 was to see if a number is palindrome or not
+
 #!/bin/sh
 read n
 que=$n
