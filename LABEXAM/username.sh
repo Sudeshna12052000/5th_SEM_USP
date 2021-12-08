@@ -1,3 +1,9 @@
+Write a shell script to accept two strings (username and password from the user. Check if the
+username is your name and password is your USN. If yes, accept the name of the file the user
+wants to view and display its contents. If either is wrong, given him one more chance to enter,
+if wrong entry is again done, warn him and quit.
+
+
 name="Ramya"
 usn="1BM19CS227"
 read -p "Enter your username:" u
