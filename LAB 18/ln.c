@@ -1,22 +1,29 @@
 #include<stdio.h>
- #include<unistd.h>
- int main(int argc, char *argv[])
+#include<sys/types.h>
+#include<unistd.h>
+#include<string.h>
+
+int main(int argc,char *argv[])
+{
+ if(argc<3 || argc>4 || (argc==4 && strcmp(argv[1],"-s")))
  {
-  if(argc!=3)
-   {
-     printf("Usage: %s <src_file><dest_file>\n",argv[0]);
-     return 0;
-   }
-  if(link(argv[1],argv[2])==-1)
-  {
-   printf("Link Error\n");
+   printf("usage: ./a.out[-s]<org_file><new_link>\n");
    return 1;
   }
-  printf("Files Linked\n");
-  printf("Inode number of linked files\n");
-  //display the inode linked files
-  char str[100];
-  sprintf(str,"ls -i %s %s\n",argv[1],argv[2]);
-  system(str);
-  return 0;
- }
+  if(argc==4)
+  {
+   if((symlink(argv[2],argv[3]))==-1)
+   printf("Cannot create symbolic link \n");
+   else
+   printf("Symbolic link created \n");
+   }
+   else
+   {
+   if((link(argv[1],argv[2]))==-1)
+   printf("Cannot create hard link \n");
+   else
+   printf("Hard link created\n");
+   }
+   return 0;
+  }
+   
